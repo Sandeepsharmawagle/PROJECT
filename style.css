@@ -531,3 +531,334 @@ ul a {
 .mobile-menu-btn.active i {
     color: orange;
 }
+.single-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+.add-to-cart-btn {
+    margin-top: auto;
+    margin-bottom: 12px;
+    padding: 12px 0;
+    background: #ffd814;
+    color: #111;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 18px #ffeb3b7c;
+    transition: background 0.2s, transform 0.2s;
+    width: 87%;
+    max-width: 240px;
+    letter-spacing: 0.5px;
+}
+.add-to-cart-btn:hover,
+.add-to-cart-btn:focus {
+    background: #ffa800;
+    transform: translateY(-2px) scale(1.04);
+}
+@media (max-width: 600px) {
+    .add-to-cart-btn {
+        width: 97%;
+        font-size: 1.02rem;
+        margin-bottom: 6px;
+        padding: 13px 0;
+    }
+}
+.single-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+.single-item img:hover {
+    transform: scale(1.05);
+}
+.single-item h3 {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    color: #333;
+    text-align: center;
+}
+.single-item p {
+    font-size: 0.9rem;
+    color: #666;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.single-item .price {
+    font-size: 1.1rem;
+    color: #e67e22;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.single-item .rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.single-item .rating i {
+    color: #f39c12;
+    margin-right: 2px;
+}
+.single-item .rating span {
+    font-size: 0.9rem;
+    color: #555;
+}
+.single-item .rating span::before {
+    content: "Rating: ";
+    font-weight: bold;
+}
+.single-item .rating span::after {
+    content: " out of 5";
+}
+.single-item .add-to-cart-btn {
+    width: 100%;
+    max-width: 200px;
+    margin-top: 10px;
+}
+.single-item .add-to-cart-btn:hover {
+    background: #f39c12;
+    transform: translateY(-2px) scale(1.04);
+}
+.single-item .add-to-cart-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 215, 20, 0.5);
+}
+.mobile-menu-btn {
+    display: none;
+}
+.mobile-menu-btn.active {
+    display: block;
+    cursor: pointer;
+    color: white;
+    font-size: 26px;
+    margin-left: 10px;
+}
+.mobile-menu-btn i {
+    font-size: 24px;
+    color: white;
+}
+.mobile-menu-btn.active i {
+    color: orange;
+}
+.mobile-menu {
+    display: none;
+}
+.mobile-menu.hidden {
+    display: none;
+}
+.mobile-menu.active {
+    display: block;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: #0f1111;
+    z-index: 1000;
+}
+.mobile-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.mobile-menu ul li {
+    padding: 10px 20px;
+    border-bottom: 1px solid #444;
+}
+.mobile-menu ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+.mobile-menu ul li a:hover {
+    background-color: #333;
+}
+
+.to1 toybox single-item{
+    background-image: url("toy1.jpg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+}
+.to2 toybox single-item{
+    background-image: url("toy2.jpg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.to3 toybox single-item{
+    background-image: url("toy3.jpg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.to4 toybox single-item{
+    background-image: url("toy4.jpg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.to5 toybox single-item{
+    background-image: url("toy5.jpg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.fu1 fubox single-item{
+    background-image: url("furniter1.jpg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.fu2 fubox single-item{
+    background-image: url("furniter2.jpg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.fu3 fubox single-item{
+    background-image: url("furniter3.jpg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.fu4 fubox single-item{
+    background-image: url("furniter4.jpg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.fu5 fubox single-item{
+    background-image: url("furniter5.jpg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.fu6 fubox single-item{
+    background-image: url("furniter6.jpg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.toybox.single-item {
+    height: 170px;
+    width: 25%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.fubox.single-item {
+    height: 200px;
+    width: 23%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.toybox.single-item img,
+.fubox.single-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+.toybox.single-item img:hover,
+.fubox.single-item img:hover {
+    transform: scale(1.05);
+}
+.single-item h3 {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    color: #333;
+    text-align: center;
+}
+.single-item p {
+    font-size: 0.9rem;
+    color: #666;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.single-item .price {
+    font-size: 1.1rem;
+    color: #e67e22;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.single-item .rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.single-item .rating i {
+    color: #f39c12;
+    margin-right: 2px;
+}
+.single-item .rating span {
+    font-size: 0.9rem;
+    color: #555;
+}
+.single-item .rating span::before {
+    content: "Rating: ";
+    font-weight: bold;
+}
+
+.single-item .rating span::after {
+    content: " out of 5";
+}
+.single-item .add-to-cart-btn {
+    width: 100%;
+    max-width: 200px;
+    margin-top: 10px;
+}
+.single-item .add-to-cart-btn:hover {
+    background: #f39c12;
+    transform: translateY(-2px) scale(1.04);
+}
+.single-item .add-to-cart-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 215, 20, 0.5);
+}
+.mobile-menu-btn {
+    display: none;
+}
+.mobile-menu-btn.active {
+    display: block;
+    cursor: pointer;
+    color: white;
+    font-size: 26px;
+    margin-left: 10px;
+}
+.mobile-menu-btn i {
+    font-size: 24px;
+    color: white;
+}
+.mobile-menu-btn.active i {
+    color: orange;
+}
+.mobile-menu {
+    display: none;
+}
+.mobile-menu.hidden {
+    display: none;
+}
+.mobile-menu.active {
+    display: block;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: #0f1111;
+    z-index: 1000;
+}
