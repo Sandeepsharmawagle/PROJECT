@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMAZON</title>
+    <title>AMAZON - Mobile Responsive</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -27,16 +28,33 @@
     <header class="sticky top-0 z-50">
         <!-- Main Navigation -->
         <nav class="bg-gray-900 text-white">
-            <div class="flex items-center justify-between px-2 py-2 lg:px-4">
-                <!-- Logo -->
-                <div class="nav-logo border-2 border-transparent hover:border-white p-2 rounded cursor-pointer transition-all duration-300">
-                    <div class="w-20 h-10 lg:w-24 lg:h-12">
+            <div class="flex items-center justify-between px-2 sm:px-4 py-1 sm:py-2">
+                <!-- Logo - Responsive sizing -->
+                <div class="nav-logo border-2 border-transparent hover:border-white p-1 sm:p-2 rounded cursor-pointer transition-all duration-300">
+                    <div class="w-14 h-6 sm:w-20 sm:h-8 lg:w-24 lg:h-12">
                         <img src="amazon_logo.png" alt="Amazon" class="w-full h-full object-contain">
                     </div>
                 </div>
 
-                <!-- Delivery Address -->
-                <div class="hidden md:block nav-address border-2 border-transparent hover:border-white p-2 rounded cursor-pointer transition-all duration-300">
+                <!-- Search Bar - Mobile optimized -->
+                <div class="flex-1 max-w-xl mx-1 sm:mx-2 lg:mx-4">
+                    <div class="flex search-bar">
+                        <select class="hidden sm:block bg-gray-200 text-gray-700 px-1 sm:px-2 py-2 text-xs sm:text-sm focus:outline-none border-none rounded-l-md">
+                            <option>All</option>
+                            <option>Electronics</option>
+                            <option>Fashion</option>
+                            <option>Home</option>
+                        </select>
+                        <input type="text" placeholder="Search Amazon" 
+                               class="flex-1 px-2 sm:px-4 py-2 text-sm text-gray-900 focus:outline-none search-input rounded-l-md sm:rounded-l-none">
+                        <button class="bg-amazon-yellow px-2 sm:px-4 py-2 rounded-r-md hover:bg-yellow-500 transition-colors duration-300 search-btn">
+                            <i class="fa-solid fa-magnifying-glass text-gray-900 text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Delivery Address - Hidden on small screens -->
+                <div class="hidden lg:block nav-address border-2 border-transparent hover:border-white p-2 rounded cursor-pointer transition-all duration-300">
                     <p class="text-gray-300 text-xs">Deliver to</p>
                     <div class="flex items-center">
                         <i class="fa-solid fa-location-dot text-white mr-1"></i>
@@ -44,255 +62,270 @@
                     </div>
                 </div>
 
-                <!-- Search Bar -->
-                <div class="flex-1 max-w-2xl mx-2 lg:mx-4">
-                    <div class="flex search-bar">
-                        <select class="bg-gray-200 text-gray-700 px-2 py-2 rounded-l-md border-none text-sm focus:outline-none">
-                            <option>All</option>
-                            <option>Electronics</option>
-                            <option>Fashion</option>
-                            <option>Home</option>
-                        </select>
-                        <input type="text" placeholder="Search Amazon.in" 
-                               class="flex-1 px-4 py-2 text-gray-900 focus:outline-none search-input">
-                        <button class="bg-amazon-yellow px-4 py-2 rounded-r-md hover:bg-yellow-500 transition-colors duration-300 search-btn">
-                            <i class="fa-solid fa-magnifying-glass text-gray-900"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Language -->
+                <!-- Language - Hidden on mobile -->
                 <div class="hidden lg:block border-2 border-transparent hover:border-white p-2 rounded cursor-pointer transition-all duration-300">
                     <p class="font-bold">EN</p>
                 </div>
 
-                <!-- Sign In -->
+                <!-- Sign In - Hidden on small screens -->
                 <div class="hidden md:block border-2 border-transparent hover:border-white p-2 rounded cursor-pointer transition-all duration-300">
                     <p class="text-xs">Hello, Sign in</p>
                     <p class="text-sm font-bold">Accounts & List</p>
                 </div>
 
-                <!-- Orders -->
+                <!-- Orders - Hidden on small screens -->
                 <div class="hidden md:block border-2 border-transparent hover:border-white p-2 rounded cursor-pointer transition-all duration-300">
                     <p class="text-xs">Returns</p>
                     <p class="text-sm font-bold">& Orders</p>
                 </div>
 
-                <!-- Cart -->
-                <div class="border-2 border-transparent hover:border-white p-2 rounded cursor-pointer transition-all duration-300 cart-icon">
+                <!-- Cart - Always visible, mobile optimized -->
+                <div class="border-2 border-transparent hover:border-white p-1 sm:p-2 rounded cursor-pointer transition-all duration-300 cart-icon">
                     <div class="flex items-center">
-                        <i class="fa-solid fa-cart-shopping text-2xl mr-2"></i>
-                        <span class="text-sm font-bold">Cart</span>
-                        <span class="cart-count bg-amazon-orange text-xs rounded-full px-2 py-1 ml-1">0</span>
+                        <i class="fa-solid fa-cart-shopping text-lg sm:text-xl lg:text-2xl"></i>
+                        <span class="hidden sm:inline text-sm font-bold ml-1">Cart</span>
+                        <span class="cart-count bg-amazon-orange text-xs rounded-full px-1.5 py-0.5 ml-1 min-w-[20px] text-center">0</span>
                     </div>
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button class="md:hidden p-2 mobile-menu-btn">
-                    <i class="fa-solid fa-bars text-xl"></i>
+                <button class="lg:hidden p-2 mobile-menu-btn touch-manipulation" aria-label="Open menu">
+                    <i class="fa-solid fa-bars text-lg"></i>
                 </button>
             </div>
         </nav>
 
-        <!-- Secondary Navigation -->
+        <!-- Secondary Navigation - Mobile scrollable -->
         <div class="bg-amazon-light-blue text-white py-2">
-            <div class="flex items-center px-4 overflow-x-auto whitespace-nowrap">
-                <div class="flex items-center mr-6 cursor-pointer hover:bg-gray-600 px-2 py-1 rounded">
+            <div class="flex items-center px-2 sm:px-4 overflow-x-auto scrollbar-hide">
+                <div class="flex items-center mr-4 sm:mr-6 cursor-pointer hover:bg-gray-600 px-2 py-1 rounded whitespace-nowrap">
                     <i class="fa-solid fa-bars mr-2"></i>
                     <span class="text-sm font-bold">All</span>
                 </div>
-                <div class="flex space-x-6 text-sm">
-                    <p class="hover:bg-gray-600 px-2 py-1 rounded cursor-pointer">Fresh</p>
-                    <p class="hover:bg-gray-600 px-2 py-1 rounded cursor-pointer">MX Player</p>
-                    <p class="hover:bg-gray-600 px-2 py-1 rounded cursor-pointer">Sell</p>
-                    <p class="hover:bg-gray-600 px-2 py-1 rounded cursor-pointer">Best Sellers</p>
-                    <p class="hover:bg-gray-600 px-2 py-1 rounded cursor-pointer">Today's Deals</p>
-                    <p class="hover:bg-gray-600 px-2 py-1 rounded cursor-pointer">Mobiles</p>
-                    <p class="hover:bg-gray-600 px-2 py-1 rounded cursor-pointer">Electronics</p>
-                    <p class="hover:bg-gray-600 px-2 py-1 rounded cursor-pointer">Home & Kitchen</p>
-                    <p class="hover:bg-gray-600 px-2 py-1 rounded cursor-pointer">Prime</p>
+                <div class="flex space-x-3 sm:space-x-6 text-sm">
+                    <p class="hover:bg-gray-600 px-2 py-1 rounded cursor-pointer whitespace-nowrap">Fresh</p>
+                    <p class="hover:bg-gray-600 px-2 py-1 rounded cursor-pointer whitespace-nowrap">Best Sellers</p>
+                    <p class="hover:bg-gray-600 px-2 py-1 rounded cursor-pointer whitespace-nowrap">Today's Deals</p>
+                    <p class="hover:bg-gray-600 px-2 py-1 rounded cursor-pointer whitespace-nowrap">Mobiles</p>
+                    <p class="hover:bg-gray-600 px-2 py-1 rounded cursor-pointer whitespace-nowrap">Electronics</p>
+                    <p class="hover:bg-gray-600 px-2 py-1 rounded cursor-pointer whitespace-nowrap">Home & Kitchen</p>
+                    <p class="hover:bg-gray-600 px-2 py-1 rounded cursor-pointer whitespace-nowrap">Prime</p>
                 </div>
             </div>
         </div>
 
-        <!-- Mobile Menu (Hidden by default) -->
-        <div class="mobile-menu hidden bg-gray-800 text-white p-4 md:hidden">
-            <div class="space-y-4">
-                <div class="border-b border-gray-600 pb-2">
-                    <p class="text-xs text-gray-300">Hello, Sign in</p>
-                    <p class="font-bold">Accounts & List</p>
+        <!-- Enhanced Mobile Menu -->
+        <div class="mobile-menu hidden fixed inset-0 z-50 lg:hidden">
+            <!-- Backdrop -->
+            <div class="mobile-backdrop fixed inset-0 bg-black bg-opacity-50"></div>
+            
+            <!-- Menu Content -->
+            <div class="mobile-menu-content fixed top-0 left-0 h-full w-80 max-w-[85vw] bg-white shadow-xl transform -translate-x-full transition-transform duration-300">
+                <!-- Menu Header -->
+                <div class="bg-amazon-blue text-white p-4 flex items-center justify-between">
+                    <div class="flex items-center">
+                        <i class="fa-solid fa-user-circle text-2xl mr-2"></i>
+                        <span class="font-bold">Hello, Sign in</span>
+                    </div>
+                    <button class="mobile-menu-close text-2xl p-1" aria-label="Close menu">
+                        <i class="fa-solid fa-times"></i>
+                    </button>
                 </div>
-                <div class="border-b border-gray-600 pb-2">
-                    <p class="text-xs text-gray-300">Returns</p>
-                    <p class="font-bold">& Orders</p>
-                </div>
-                <div class="space-y-2">
-                    <p class="hover:text-amazon-orange cursor-pointer">Fresh</p>
-                    <p class="hover:text-amazon-orange cursor-pointer">Best Sellers</p>
-                    <p class="hover:text-amazon-orange cursor-pointer">Today's Deals</p>
-                    <p class="hover:text-amazon-orange cursor-pointer">Electronics</p>
-                    <p class="hover:text-amazon-orange cursor-pointer">Prime</p>
+                
+                <!-- Menu Items -->
+                <div class="flex-1 overflow-y-auto p-4">
+                    <!-- Account Section -->
+                    <div class="border-b border-gray-200 pb-4 mb-4">
+                        <h3 class="font-bold text-gray-800 mb-2">Your Account</h3>
+                        <div class="space-y-2">
+                            <p class="py-2 px-2 hover:bg-gray-100 rounded cursor-pointer">Your Orders</p>
+                            <p class="py-2 px-2 hover:bg-gray-100 rounded cursor-pointer">Your Wish Lists</p>
+                            <p class="py-2 px-2 hover:bg-gray-100 rounded cursor-pointer">Your Recommendations</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Categories -->
+                    <div class="border-b border-gray-200 pb-4 mb-4">
+                        <h3 class="font-bold text-gray-800 mb-2">Shop by Category</h3>
+                        <div class="space-y-2">
+                            <p class="py-2 px-2 hover:bg-gray-100 rounded cursor-pointer">Electronics</p>
+                            <p class="py-2 px-2 hover:bg-gray-100 rounded cursor-pointer">Fashion</p>
+                            <p class="py-2 px-2 hover:bg-gray-100 rounded cursor-pointer">Home & Kitchen</p>
+                            <p class="py-2 px-2 hover:bg-gray-100 rounded cursor-pointer">Books</p>
+                            <p class="py-2 px-2 hover:bg-gray-100 rounded cursor-pointer">Sports & Outdoors</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Programs -->
+                    <div class="pb-4">
+                        <h3 class="font-bold text-gray-800 mb-2">Programs & Features</h3>
+                        <div class="space-y-2">
+                            <p class="py-2 px-2 hover:bg-gray-100 rounded cursor-pointer">Prime</p>
+                            <p class="py-2 px-2 hover:bg-gray-100 rounded cursor-pointer">Amazon Pay</p>
+                            <p class="py-2 px-2 hover:bg-gray-100 rounded cursor-pointer">Today's Deals</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <div class="hero-section relative h-64 md:h-80 lg:h-96 bg-cover bg-center" style="background-image: url('hero_image.jpg');">
-        <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
-            <div class="text-center text-white hero-content">
-                <h1 class="text-2xl md:text-4xl lg:text-5xl font-bold mb-4">Welcome to Amazon</h1>
-                <p class="text-lg md:text-xl">Discover millions of products</p>
+    <!-- Hero Section - Mobile optimized -->
+    <div class="hero-section relative h-48 sm:h-64 md:h-80 lg:h-96 bg-cover bg-center" style="background-image: url('hero_image.jpg');">
+        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+            <div class="text-center text-white hero-content px-4">
+                <h1 class="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-4">Welcome to Amazon</h1>
+                <p class="text-sm sm:text-lg md:text-xl">Discover millions of products</p>
             </div>
         </div>
     </div>
 
     <!-- Main Content -->
-    <main class="bg-yellow-50 py-6">
-        <!-- Product Cards Grid -->
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 product-grid">
+    <main class="bg-yellow-50 py-3 sm:py-6">
+        <!-- Product Cards Grid - Responsive -->
+        <div class="container mx-auto px-2 sm:px-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 product-grid">
                 <!-- Card 1: Appliances -->
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 product-card">
-                    <h3 class="text-lg font-bold mb-4">Appliances for your home | Up to 55% off</h3>
-                    <div class="grid grid-cols-2 gap-4 mb-4">
-                        <div class="space-y-2">
-                            <div class="h-24 bg-cover bg-center rounded" style="background-image: url('appliance1.jpg');"></div>
-                            <p class="text-sm text-center">Air conditioner</p>
+                <div class="bg-white p-3 sm:p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 product-card">
+                    <h3 class="text-sm sm:text-lg font-bold mb-2 sm:mb-4 leading-tight">Appliances for your home | Up to 55% off</h3>
+                    <div class="grid grid-cols-2 gap-2 sm:gap-4 mb-2 sm:mb-4">
+                        <div class="space-y-1 sm:space-y-2">
+                            <div class="h-16 sm:h-20 lg:h-24 bg-gray-200 bg-cover bg-center rounded"></div>
+                            <p class="text-xs sm:text-sm text-center">Air conditioner</p>
                         </div>
-                        <div class="space-y-2">
-                            <div class="h-24 bg-cover bg-center rounded" style="background-image: url('appliance2.jpg');"></div>
-                            <p class="text-sm text-center">Refrigerator</p>
+                        <div class="space-y-1 sm:space-y-2">
+                            <div class="h-16 sm:h-20 lg:h-24 bg-gray-200 bg-cover bg-center rounded"></div>
+                            <p class="text-xs sm:text-sm text-center">Refrigerator</p>
                         </div>
-                        <div class="space-y-2">
-                            <div class="h-24 bg-cover bg-center rounded" style="background-image: url('appliance3.jpg');"></div>
-                            <p class="text-sm text-center">Microwave</p>
+                        <div class="space-y-1 sm:space-y-2">
+                            <div class="h-16 sm:h-20 lg:h-24 bg-gray-200 bg-cover bg-center rounded"></div>
+                            <p class="text-xs sm:text-sm text-center">Microwave</p>
                         </div>
-                        <div class="space-y-2">
-                            <div class="h-24 bg-cover bg-center rounded" style="background-image: url('appliance4.jpg');"></div>
-                            <p class="text-sm text-center">Washing Machine</p>
+                        <div class="space-y-1 sm:space-y-2">
+                            <div class="h-16 sm:h-20 lg:h-24 bg-gray-200 bg-cover bg-center rounded"></div>
+                            <p class="text-xs sm:text-sm text-center">Washing Machine</p>
                         </div>
                     </div>
-                    <p class="text-blue-600 hover:text-blue-800 cursor-pointer text-sm">See more</p>
+                    <p class="text-blue-600 hover:text-blue-800 cursor-pointer text-xs sm:text-sm">See more</p>
                 </div>
 
                 <!-- Card 2: Home Decor -->
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 product-card">
-                    <h3 class="text-lg font-bold mb-4">Revamp your home in style</h3>
-                    <div class="grid grid-cols-2 gap-4 mb-4">
-                        <div class="space-y-2">
-                            <div class="h-24 bg-cover bg-center rounded" style="background-image: url('revamp1.jpg');"></div>
-                            <p class="text-sm text-center">Cushion covers</p>
+                <div class="bg-white p-3 sm:p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 product-card">
+                    <h3 class="text-sm sm:text-lg font-bold mb-2 sm:mb-4 leading-tight">Revamp your home in style</h3>
+                    <div class="grid grid-cols-2 gap-2 sm:gap-4 mb-2 sm:mb-4">
+                        <div class="space-y-1 sm:space-y-2">
+                            <div class="h-16 sm:h-20 lg:h-24 bg-gray-200 bg-cover bg-center rounded"></div>
+                            <p class="text-xs sm:text-sm text-center">Cushion covers</p>
                         </div>
-                        <div class="space-y-2">
-                            <div class="h-24 bg-cover bg-center rounded" style="background-image: url('revamp2.jpg');"></div>
-                            <p class="text-sm text-center">Figurines & vases</p>
+                        <div class="space-y-1 sm:space-y-2">
+                            <div class="h-16 sm:h-20 lg:h-24 bg-gray-200 bg-cover bg-center rounded"></div>
+                            <p class="text-xs sm:text-sm text-center">Figurines & vases</p>
                         </div>
-                        <div class="space-y-2">
-                            <div class="h-24 bg-cover bg-center rounded" style="background-image: url('revamp3.jpg');"></div>
-                            <p class="text-sm text-center">Home storage</p>
+                        <div class="space-y-1 sm:space-y-2">
+                            <div class="h-16 sm:h-20 lg:h-24 bg-gray-200 bg-cover bg-center rounded"></div>
+                            <p class="text-xs sm:text-sm text-center">Home storage</p>
                         </div>
-                        <div class="space-y-2">
-                            <div class="h-24 bg-cover bg-center rounded" style="background-image: url('revamp4.jpg');"></div>
-                            <p class="text-sm text-center">Lighting solutions</p>
+                        <div class="space-y-1 sm:space-y-2">
+                            <div class="h-16 sm:h-20 lg:h-24 bg-gray-200 bg-cover bg-center rounded"></div>
+                            <p class="text-xs sm:text-sm text-center">Lighting solutions</p>
                         </div>
                     </div>
-                    <p class="text-blue-600 hover:text-blue-800 cursor-pointer text-sm">See more</p>
+                    <p class="text-blue-600 hover:text-blue-800 cursor-pointer text-xs sm:text-sm">See more</p>
                 </div>
 
                 <!-- Card 3: Headphones -->
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 product-card">
-                    <h3 class="text-lg font-bold mb-4">Starting ₹149 | Headphones</h3>
-                    <div class="grid grid-cols-2 gap-4 mb-4">
-                        <div class="space-y-2">
-                            <div class="h-24 bg-cover bg-center rounded" style="background-image: url('headphone1.jpg');"></div>
-                            <p class="text-sm text-center">Starting at ₹350</p>
+                <div class="bg-white p-3 sm:p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 product-card">
+                    <h3 class="text-sm sm:text-lg font-bold mb-2 sm:mb-4 leading-tight">Starting ₹149 | Headphones</h3>
+                    <div class="grid grid-cols-2 gap-2 sm:gap-4 mb-2 sm:mb-4">
+                        <div class="space-y-1 sm:space-y-2">
+                            <div class="h-16 sm:h-20 lg:h-24 bg-gray-200 bg-cover bg-center rounded"></div>
+                            <p class="text-xs sm:text-sm text-center">Starting at ₹350</p>
                         </div>
-                        <div class="space-y-2">
-                            <div class="h-24 bg-cover bg-center rounded" style="background-image: url('headphone2.jpg');"></div>
-                            <p class="text-sm text-center">Starting at ₹249</p>
+                        <div class="space-y-1 sm:space-y-2">
+                            <div class="h-16 sm:h-20 lg:h-24 bg-gray-200 bg-cover bg-center rounded"></div>
+                            <p class="text-xs sm:text-sm text-center">Starting at ₹249</p>
                         </div>
-                        <div class="space-y-2">
-                            <div class="h-24 bg-cover bg-center rounded" style="background-image: url('headphone3.jpg');"></div>
-                            <p class="text-sm text-center">Starting at ₹649</p>
+                        <div class="space-y-1 sm:space-y-2">
+                            <div class="h-16 sm:h-20 lg:h-24 bg-gray-200 bg-cover bg-center rounded"></div>
+                            <p class="text-xs sm:text-sm text-center">Starting at ₹649</p>
                         </div>
-                        <div class="space-y-2">
-                            <div class="h-24 bg-cover bg-center rounded" style="background-image: url('headphone4.jpg');"></div>
-                            <p class="text-sm text-center">Starting at ₹149</p>
+                        <div class="space-y-1 sm:space-y-2">
+                            <div class="h-16 sm:h-20 lg:h-24 bg-gray-200 bg-cover bg-center rounded"></div>
+                            <p class="text-xs sm:text-sm text-center">Starting at ₹149</p>
                         </div>
                     </div>
-                    <p class="text-blue-600 hover:text-blue-800 cursor-pointer text-sm">See more</p>
+                    <p class="text-blue-600 hover:text-blue-800 cursor-pointer text-xs sm:text-sm">See more</p>
                 </div>
 
                 <!-- Card 4: Amazon Brands -->
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 product-card">
-                    <h3 class="text-lg font-bold mb-4">Starting ₹99 | Amazon Brands & more</h3>
-                    <div class="grid grid-cols-2 gap-4 mb-4">
-                        <div class="space-y-2">
-                            <div class="h-24 bg-cover bg-center rounded" style="background-image: url('99item1.jpg');"></div>
-                            <p class="text-sm text-center">Toys and games</p>
+                <div class="bg-white p-3 sm:p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 product-card">
+                    <h3 class="text-sm sm:text-lg font-bold mb-2 sm:mb-4 leading-tight">Starting ₹99 | Amazon Brands & more</h3>
+                    <div class="grid grid-cols-2 gap-2 sm:gap-4 mb-2 sm:mb-4">
+                        <div class="space-y-1 sm:space-y-2">
+                            <div class="h-16 sm:h-20 lg:h-24 bg-gray-200 bg-cover bg-center rounded"></div>
+                            <p class="text-xs sm:text-sm text-center">Toys and games</p>
                         </div>
-                        <div class="space-y-2">
-                            <div class="h-24 bg-cover bg-center rounded" style="background-image: url('99item2.jpg');"></div>
-                            <p class="text-sm text-center">Home storage</p>
+                        <div class="space-y-1 sm:space-y-2">
+                            <div class="h-16 sm:h-20 lg:h-24 bg-gray-200 bg-cover bg-center rounded"></div>
+                            <p class="text-xs sm:text-sm text-center">Home storage</p>
                         </div>
-                        <div class="space-y-2">
-                            <div class="h-24 bg-cover bg-center rounded" style="background-image: url('99item3.jpg');"></div>
-                            <p class="text-sm text-center">Up to 60% off shoes</p>
+                        <div class="space-y-1 sm:space-y-2">
+                            <div class="h-16 sm:h-20 lg:h-24 bg-gray-200 bg-cover bg-center rounded"></div>
+                            <p class="text-xs sm:text-sm text-center">Up to 60% off shoes</p>
                         </div>
-                        <div class="space-y-2">
-                            <div class="h-24 bg-cover bg-center rounded" style="background-image: url('99item4.jpg');"></div>
-                            <p class="text-sm text-center">Storage & racks</p>
+                        <div class="space-y-1 sm:space-y-2">
+                            <div class="h-16 sm:h-20 lg:h-24 bg-gray-200 bg-cover bg-center rounded"></div>
+                            <p class="text-xs sm:text-sm text-center">Storage & racks</p>
                         </div>
                     </div>
-                    <p class="text-blue-600 hover:text-blue-800 cursor-pointer text-sm">See more</p>
+                    <p class="text-blue-600 hover:text-blue-800 cursor-pointer text-xs sm:text-sm">See more</p>
                 </div>
             </div>
         </div>
 
-        <!-- Full Width Sections -->
-        <div class="container mx-auto px-4 mt-8 space-y-8">
+        <!-- Full Width Sections - Mobile optimized -->
+        <div class="container mx-auto px-2 sm:px-4 mt-6 sm:mt-8 space-y-4 sm:space-y-8">
             <!-- Toys Section -->
-            <div class="bg-white rounded-lg p-6 shadow-md full-section">
-                <h3 class="text-xl font-bold mb-6">Starting ₹149 + Extra up to 5% off* | Toys & games | Amazon Brands</h3>
-                <div class="flex space-x-4 overflow-x-auto pb-4">
-                    <div class="flex-shrink-0 w-48 h-48 bg-cover bg-center rounded-lg" style="background-image: url('toy1.jpg');"></div>
-                    <div class="flex-shrink-0 w-48 h-48 bg-cover bg-center rounded-lg" style="background-image: url('toy2.jpg');"></div>
-                    <div class="flex-shrink-0 w-48 h-48 bg-cover bg-center rounded-lg" style="background-image: url('toy3.jpg');"></div>
-                    <div class="flex-shrink-0 w-48 h-48 bg-cover bg-center rounded-lg" style="background-image: url('toy4.jpg');"></div>
-                    <div class="flex-shrink-0 w-48 h-48 bg-cover bg-center rounded-lg" style="background-image: url('toy5.jpg');"></div>
+            <div class="bg-white rounded-lg p-3 sm:p-6 shadow-md full-section">
+                <h3 class="text-sm sm:text-xl font-bold mb-3 sm:mb-6">Starting ₹149 + Extra up to 5% off* | Toys & games | Amazon Brands</h3>
+                <div class="flex space-x-2 sm:space-x-4 overflow-x-auto pb-4 scrollbar-hide">
+                    <div class="flex-shrink-0 w-32 h-32 sm:w-48 sm:h-48 bg-gray-200 bg-cover bg-center rounded-lg"></div>
+                    <div class="flex-shrink-0 w-32 h-32 sm:w-48 sm:h-48 bg-gray-200 bg-cover bg-center rounded-lg"></div>
+                    <div class="flex-shrink-0 w-32 h-32 sm:w-48 sm:h-48 bg-gray-200 bg-cover bg-center rounded-lg"></div>
+                    <div class="flex-shrink-0 w-32 h-32 sm:w-48 sm:h-48 bg-gray-200 bg-cover bg-center rounded-lg"></div>
+                    <div class="flex-shrink-0 w-32 h-32 sm:w-48 sm:h-48 bg-gray-200 bg-cover bg-center rounded-lg"></div>
                 </div>
             </div>
 
             <!-- Furniture Section -->
-            <div class="bg-white rounded-lg p-6 shadow-md full-section">
-                <h3 class="text-xl font-bold mb-6">Up to 80% off | Top deals in home furnishings from Small businesses</h3>
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                    <div class="h-40 bg-cover bg-center rounded-lg" style="background-image: url('furniter1.jpg');"></div>
-                    <div class="h-40 bg-cover bg-center rounded-lg" style="background-image: url('furniter2.jpg');"></div>
-                    <div class="h-40 bg-cover bg-center rounded-lg" style="background-image: url('furniter3.jpg');"></div>
-                    <div class="h-40 bg-cover bg-center rounded-lg" style="background-image: url('furniter4.jpg');"></div>
-                    <div class="h-40 bg-cover bg-center rounded-lg" style="background-image: url('furniter5.jpg');"></div>
-                    <div class="h-40 bg-cover bg-center rounded-lg" style="background-image: url('furniter6.jpg');"></div>
+            <div class="bg-white rounded-lg p-3 sm:p-6 shadow-md full-section">
+                <h3 class="text-sm sm:text-xl font-bold mb-3 sm:mb-6">Up to 80% off | Top deals in home furnishings from Small businesses</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-4">
+                    <div class="h-24 sm:h-32 lg:h-40 bg-gray-200 bg-cover bg-center rounded-lg"></div>
+                    <div class="h-24 sm:h-32 lg:h-40 bg-gray-200 bg-cover bg-center rounded-lg"></div>
+                    <div class="h-24 sm:h-32 lg:h-40 bg-gray-200 bg-cover bg-center rounded-lg"></div>
+                    <div class="h-24 sm:h-32 lg:h-40 bg-gray-200 bg-cover bg-center rounded-lg"></div>
+                    <div class="h-24 sm:h-32 lg:h-40 bg-gray-200 bg-cover bg-center rounded-lg"></div>
+                    <div class="h-24 sm:h-32 lg:h-40 bg-gray-200 bg-cover bg-center rounded-lg"></div>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer - Mobile optimized -->
     <footer class="bg-amazon-blue text-white">
         <!-- Back to top -->
-        <div class="bg-amazon-light-blue text-center py-4 cursor-pointer hover:bg-gray-600 transition-colors duration-300 back-to-top">
+        <div class="bg-amazon-light-blue text-center py-3 sm:py-4 cursor-pointer hover:bg-gray-600 transition-colors duration-300 back-to-top">
             <p class="text-sm">Back to Top</p>
         </div>
 
         <!-- Main footer content -->
-        <div class="bg-amazon-blue py-12">
+        <div class="bg-amazon-blue py-6 sm:py-12">
             <div class="container mx-auto px-4">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
                     <div>
-                        <h4 class="font-bold mb-4">Get to Know Us</h4>
-                        <ul class="space-y-2 text-sm text-gray-300">
+                        <h4 class="font-bold mb-2 sm:mb-4">Get to Know Us</h4>
+                        <ul class="space-y-1 sm:space-y-2 text-sm text-gray-300">
                             <li><a href="#" class="hover:text-white transition-colors duration-300">About Amazon</a></li>
                             <li><a href="#" class="hover:text-white transition-colors duration-300">Careers</a></li>
                             <li><a href="#" class="hover:text-white transition-colors duration-300">Press Releases</a></li>
@@ -300,24 +333,24 @@
                         </ul>
                     </div>
                     <div>
-                        <h4 class="font-bold mb-4">Connect with Us</h4>
-                        <ul class="space-y-2 text-sm text-gray-300">
+                        <h4 class="font-bold mb-2 sm:mb-4">Connect with Us</h4>
+                        <ul class="space-y-1 sm:space-y-2 text-sm text-gray-300">
                             <li><a href="#" class="hover:text-white transition-colors duration-300">Facebook</a></li>
                             <li><a href="#" class="hover:text-white transition-colors duration-300">Twitter</a></li>
                             <li><a href="#" class="hover:text-white transition-colors duration-300">Instagram</a></li>
                         </ul>
                     </div>
                     <div>
-                        <h4 class="font-bold mb-4">Make Money with Us</h4>
-                        <ul class="space-y-2 text-sm text-gray-300">
+                        <h4 class="font-bold mb-2 sm:mb-4">Make Money with Us</h4>
+                        <ul class="space-y-1 sm:space-y-2 text-sm text-gray-300">
                             <li><a href="#" class="hover:text-white transition-colors duration-300">Sell on Amazon</a></li>
                             <li><a href="#" class="hover:text-white transition-colors duration-300">Become an Affiliate</a></li>
                             <li><a href="#" class="hover:text-white transition-colors duration-300">Advertise Your Products</a></li>
                         </ul>
                     </div>
                     <div>
-                        <h4 class="font-bold mb-4">Let Us Help You</h4>
-                        <ul class="space-y-2 text-sm text-gray-300">
+                        <h4 class="font-bold mb-2 sm:mb-4">Let Us Help You</h4>
+                        <ul class="space-y-1 sm:space-y-2 text-sm text-gray-300">
                             <li><a href="#" class="hover:text-white transition-colors duration-300">Your Account</a></li>
                             <li><a href="#" class="hover:text-white transition-colors duration-300">Returns Centre</a></li>
                             <li><a href="#" class="hover:text-white transition-colors duration-300">Help</a></li>
@@ -328,19 +361,19 @@
         </div>
 
         <!-- Footer logo and links -->
-        <div class="bg-amazon-blue border-t border-gray-600 py-8">
+        <div class="bg-amazon-blue border-t border-gray-600 py-4 sm:py-8">
             <div class="container mx-auto px-4 text-center">
-                <div class="w-24 h-12 mx-auto mb-4">
+                <div class="w-16 h-8 sm:w-24 sm:h-12 mx-auto mb-4">
                     <img src="amazon_logo.png" alt="Amazon" class="w-full h-full object-contain">
                 </div>
             </div>
         </div>
 
         <!-- Copyright -->
-        <div class="bg-gray-900 py-6">
+        <div class="bg-gray-900 py-4 sm:py-6">
             <div class="container mx-auto px-4 text-center">
-                <div class="text-sm text-gray-300 space-y-2">
-                    <div class="flex flex-wrap justify-center space-x-4">
+                <div class="text-xs sm:text-sm text-gray-300 space-y-2">
+                    <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-2 sm:gap-4">
                         <a href="#" class="hover:text-white">Conditions of Use & Sale</a>
                         <a href="#" class="hover:text-white">Privacy Notice</a>
                         <a href="#" class="hover:text-white">Interest-Based Ads</a>
@@ -353,122 +386,206 @@
 
     <!-- JavaScript -->
     <script>
-        // GSAP Animations
-        gsap.registerPlugin();
+        // Enhanced Mobile-First JavaScript
+        class ResponsiveAmazonClone {
+            constructor() {
+                this.cartCount = 0;
+                this.isMenuOpen = false;
+                this.isMobile = window.innerWidth <= 768;
+                
+                this.init();
+            }
 
-        // Initialize animations when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            // Navbar animation
-            gsap.from('nav', {
-                duration: 1,
-                y: -100,
-                opacity: 0,
-                ease: 'power2.out'
-            });
+            init() {
+                this.initGSAPAnimations();
+                this.setupEventListeners();
+                this.setupMobileOptimizations();
+                this.loadUserData();
+            }
 
-            // Hero section animation
-            gsap.from('.hero-content', {
-                duration: 1.5,
-                y: 50,
-                opacity: 0,
-                delay: 0.5,
-                ease: 'power2.out'
-            });
+            initGSAPAnimations() {
+                gsap.registerPlugin(ScrollTrigger);
+                
+                // Reduce animation complexity on mobile
+                const animationDuration = this.isMobile ? 0.5 : 1;
+                const staggerAmount = this.isMobile ? 0.1 : 0.2;
 
-            // Product cards staggered animation
-            gsap.from('.product-card', {
-                duration: 0.8,
-                y: 30,
-                opacity: 0,
-                stagger: 0.2,
-                delay: 1,
-                ease: 'power2.out'
-            });
-
-            // Full sections animation
-            gsap.from('.full-section', {
-                duration: 1,
-                y: 50,
-                opacity: 0,
-                stagger: 0.3,
-                delay: 1.5,
-                ease: 'power2.out'
-            });
-
-            // Search bar focus animation
-            const searchInput = document.querySelector('.search-input');
-            const searchBar = document.querySelector('.search-bar');
-            
-            searchInput.addEventListener('focus', function() {
-                gsap.to(searchBar, {
-                    duration: 0.3,
-                    scale: 1.02,
-                    boxShadow: '0 0 20px rgba(255, 153, 0, 0.3)'
-                });
-            });
-
-            searchInput.addEventListener('blur', function() {
-                gsap.to(searchBar, {
-                    duration: 0.3,
-                    scale: 1,
-                    boxShadow: 'none'
-                });
-            });
-        });
-
-        // Mobile menu functionality
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const mobileMenu = document.querySelector('.mobile-menu');
-
-        mobileMenuBtn.addEventListener('click', function() {
-            if (mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.remove('hidden');
-                gsap.from(mobileMenu, {
-                    duration: 0.5,
-                    y: -20,
+                // Initial animations
+                const tl = gsap.timeline();
+                
+                tl.from('nav', {
+                    duration: animationDuration,
+                    y: -50,
                     opacity: 0,
                     ease: 'power2.out'
-                });
-            } else {
-                gsap.to(mobileMenu, {
-                    duration: 0.3,
-                    y: -20,
+                })
+                .from('.hero-content', {
+                    duration: animationDuration * 1.2,
+                    y: 30,
                     opacity: 0,
-                    ease: 'power2.in',
-                    onComplete: function() {
-                        mobileMenu.classList.add('hidden');
+                    ease: 'power2.out'
+                }, '-=0.3')
+                .from('.product-card', {
+                    duration: animationDuration * 0.8,
+                    y: 20,
+                    opacity: 0,
+                    stagger: staggerAmount,
+                    ease: 'power2.out'
+                }, '-=0.2');
+
+                // Scroll animations
+                if (!this.isMobile) {
+                    gsap.utils.toArray('.full-section').forEach(section => {
+                        gsap.from(section, {
+                            scrollTrigger: {
+                                trigger: section,
+                                start: 'top 85%',
+                                toggleActions: 'play none none reverse'
+                            },
+                            duration: 0.8,
+                            y: 30,
+                            opacity: 0,
+                            ease: 'power2.out'
+                        });
+                    });
+                }
+            }
+
+            setupEventListeners() {
+                // Mobile menu
+                this.setupMobileMenu();
+                
+                // Search functionality
+                this.setupSearch();
+                
+                // Cart functionality
+                this.setupCart();
+                
+                // Touch events for mobile
+                this.setupTouchEvents();
+                
+                // Window events
+                this.setupWindowEvents();
+            }
+
+            setupMobileMenu() {
+                const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+                const mobileMenu = document.querySelector('.mobile-menu');
+                const mobileMenuContent = document.querySelector('.mobile-menu-content');
+                const mobileMenuClose = document.querySelector('.mobile-menu-close');
+                const mobileBackdrop = document.querySelector('.mobile-backdrop');
+
+                mobileMenuBtn?.addEventListener('click', () => this.toggleMobileMenu());
+                mobileMenuClose?.addEventListener('click', () => this.closeMobileMenu());
+                mobileBackdrop?.addEventListener('click', () => this.closeMobileMenu());
+
+                // Swipe to close menu
+                let startX = 0;
+                mobileMenuContent?.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                });
+
+                mobileMenuContent?.addEventListener('touchmove', (e) => {
+                    const currentX = e.touches[0].clientX;
+                    const diffX = startX - currentX;
+                    
+                    if (diffX > 50) { // Swipe left to close
+                        this.closeMobileMenu();
                     }
                 });
             }
-        });
 
-        // Cart functionality
-        let cartCount = 0;
-        const cartCountElement = document.querySelector('.cart-count');
-        const cartIcon = document.querySelector('.cart-icon');
+            toggleMobileMenu() {
+                if (this.isMenuOpen) {
+                    this.closeMobileMenu();
+                } else {
+                    this.openMobileMenu();
+                }
+            }
 
-        // Add to cart function (example)
-        function addToCart() {
-            cartCount++;
-            cartCountElement.textContent = cartCount;
-            
-            // Animation for cart icon
-            gsap.to(cartIcon, {
-                duration: 0.3,
-                scale: 1.2,
-                yoyo: true,
-                repeat: 1,
-                ease: 'power2.inOut'
-            });
-        }
+            openMobileMenu() {
+                const mobileMenu = document.querySelector('.mobile-menu');
+                const mobileMenuContent = document.querySelector('.mobile-menu-content');
+                
+                mobileMenu.classList.remove('hidden');
+                this.isMenuOpen = true;
+                
+                // Animate menu in
+                gsap.to(mobileMenuContent, {
+                    x: '0%',
+                    duration: 0.3,
+                    ease: 'power3.out'
+                });
+                
+                // Prevent body scroll
+                document.body.style.overflow = 'hidden';
+            }
 
-        // Search functionality
-        const searchBtn = document.querySelector('.search-btn');
-        const searchInput = document.querySelector('.search-input');
+            closeMobileMenu() {
+                const mobileMenu = document.querySelector('.mobile-menu');
+                const mobileMenuContent = document.querySelector('.mobile-menu-content');
+                
+                // Animate menu out
+                gsap.to(mobileMenuContent, {
+                    x: '-100%',
+                    duration: 0.3,
+                    ease: 'power3.in',
+                    onComplete: () => {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+                
+                this.isMenuOpen = false;
+                document.body.style.overflow = '';
+            }
 
-        searchBtn.addEventListener('click', function() {
-            const query = searchInput.value.trim();
-            if (query) {
+            setupSearch() {
+                const searchInput = document.querySelector('.search-input');
+                const searchBtn = document.querySelector('.search-btn');
+                const searchBar = document.querySelector('.search-bar');
+
+                // Focus animations
+                searchInput?.addEventListener('focus', () => {
+                    if (!this.isMobile) {
+                        gsap.to(searchBar, {
+                            duration: 0.3,
+                            scale: 1.02,
+                            boxShadow: '0 0 20px rgba(255, 153, 0, 0.3)',
+                            ease: 'power2.out'
+                        });
+                    }
+                });
+
+                searchInput?.addEventListener('blur', () => {
+                    if (!this.isMobile) {
+                        gsap.to(searchBar, {
+                            duration: 0.3,
+                            scale: 1,
+                            boxShadow: 'none',
+                            ease: 'power2.out'
+                        });
+                    }
+                });
+
+                // Search functionality
+                searchBtn?.addEventListener('click', () => this.performSearch());
+                searchInput?.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        this.performSearch();
+                    }
+                });
+            }
+
+            performSearch() {
+                const searchInput = document.querySelector('.search-input');
+                const searchBtn = document.querySelector('.search-btn');
+                const query = searchInput?.value.trim();
+
+                if (!query) {
+                    this.showNotification('Please enter a search term', 'warning');
+                    return;
+                }
+
                 // Animate search button
                 gsap.to(searchBtn, {
                     duration: 0.2,
@@ -476,66 +593,218 @@
                     yoyo: true,
                     repeat: 1
                 });
-                
-                // Here you would typically handle the search
-                console.log('Searching for:', query);
-                alert(`Searching for: ${query}`);
+
+                this.showNotification(`Searching for: ${query}`, 'info');
             }
-        });
 
-        // Back to top functionality
-        const backToTop = document.querySelector('.back-to-top');
-        backToTop.addEventListener('click', function() {
-            gsap.to(window, {
-                duration: 1,
-                scrollTo: 0,
-                ease: 'power2.inOut'
-            });
-        });
+            setupCart() {
+                const cartIcon = document.querySelector('.cart-icon');
+                const cartCountElement = document.querySelector('.cart-count');
+                
+                cartIcon?.addEventListener('click', () => this.openCart());
+                this.updateCartDisplay();
+            }
 
-        // Hover animations for product cards
-        const productCards = document.querySelectorAll('.product-card');
-        productCards.forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                gsap.to(card, {
+            addToCart(quantity = 1) {
+                this.cartCount += quantity;
+                
+                // Animate cart icon
+                const cartIcon = document.querySelector('.cart-icon');
+                gsap.to(cartIcon, {
                     duration: 0.3,
-                    y: -5,
-                    boxShadow: '0 10px 25px rgba(0,0,0,0.15)',
-                    ease: 'power2.out'
+                    scale: 1.2,
+                    yoyo: true,
+                    repeat: 1,
+                    ease: 'elastic.out(1, 0.3)'
                 });
-            });
 
-            card.addEventListener('mouseleave', function() {
-                gsap.to(card, {
-                    duration: 0.3,
-                    y: 0,
-                    boxShadow: '0 1px 3px rgba(0,0,0,0.12)',
-                    ease: 'power2.out'
+                this.updateCartDisplay();
+                this.showNotification('Item added to cart!', 'success');
+                this.saveCartData();
+            }
+
+            updateCartDisplay() {
+                const cartCountElement = document.querySelector('.cart-count');
+                if (cartCountElement) {
+                    cartCountElement.textContent = this.cartCount;
+                    
+                    gsap.fromTo(cartCountElement, 
+                        { scale: 1.3 },
+                        { scale: 1, duration: 0.3, ease: 'back.out(1.7)' }
+                    );
+                }
+            }
+
+            openCart() {
+                this.showNotification(`Cart has ${this.cartCount} items`, 'info');
+                
+                gsap.to('.cart-icon', {
+                    duration: 0.4,
+                    rotation: 360,
+                    ease: 'power2.inOut'
                 });
-            });
+            }
+
+            setupTouchEvents() {
+                // Improve touch responsiveness
+                document.querySelectorAll('.product-card').forEach(card => {
+                    // Remove hover effects on touch devices
+                    if (this.isMobile) {
+                        card.addEventListener('touchstart', () => {
+                            card.style.transform = 'scale(0.98)';
+                        });
+                        
+                        card.addEventListener('touchend', () => {
+                            card.style.transform = 'scale(1)';
+                            setTimeout(() => {
+                                this.openProductDetails(card);
+                            }, 100);
+                        });
+                    } else {
+                        // Desktop hover effects
+                        card.addEventListener('mouseenter', () => {
+                            gsap.to(card, {
+                                duration: 0.3,
+                                y: -5,
+                                boxShadow: '0 10px 25px rgba(0,0,0,0.15)',
+                                ease: 'power2.out'
+                            });
+                        });
+
+                        card.addEventListener('mouseleave', () => {
+                            gsap.to(card, {
+                                duration: 0.3,
+                                y: 0,
+                                boxShadow: '0 1px 3px rgba(0,0,0,0.12)',
+                                ease: 'power2.out'
+                            });
+                        });
+                    }
+                });
+            }
+
+            setupWindowEvents() {
+                // Handle window resize
+                window.addEventListener('resize', () => {
+                    this.handleResize();
+                });
+
+                // Handle orientation change
+                window.addEventListener('orientationchange', () => {
+                    setTimeout(() => {
+                        this.handleResize();
+                    }, 500);
+                });
+
+                // Back to top functionality
+                const backToTop = document.querySelector('.back-to-top');
+                backToTop?.addEventListener('click', () => {
+                    gsap.to(window, {
+                        duration: 1,
+                        scrollTo: 0,
+                        ease: 'power2.inOut'
+                    });
+                });
+            }
+
+            handleResize() {
+                const wasMobile = this.isMobile;
+                this.isMobile = window.innerWidth <= 768;
+                
+                // Close mobile menu on resize to desktop
+                if (!this.isMobile && this.isMenuOpen) {
+                    this.closeMobileMenu();
+                }
+                
+                // Reinitialize animations if device type changed
+                if (wasMobile !== this.isMobile) {
+                    ScrollTrigger.refresh();
+                }
+            }
+
+            setupMobileOptimizations() {
+                if (this.isMobile) {
+                    // Add mobile-specific styles
+                    document.body.style.webkitTapHighlightColor = 'rgba(0,0,0,0)';
+                    
+                    // Optimize scrolling
+                    document.body.style.webkitOverflowScrolling = 'touch';
+                    
+                    // Prevent zoom on input focus
+                    document.querySelectorAll('input').forEach(input => {
+                        input.addEventListener('focus', () => {
+                            document.querySelector('meta[name=viewport]').content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0';
+                        });
+                        
+                        input.addEventListener('blur', () => {
+                            document.querySelector('meta[name=viewport]').content = 'width=device-width, initial-scale=1.0';
+                        });
+                    });
+                }
+            }
+
+            openProductDetails(productCard) {
+                const productTitle = productCard.querySelector('h3')?.textContent || 'Product';
+                this.showNotification(`Opening: ${productTitle}`, 'info');
+                
+                setTimeout(() => {
+                    if (confirm('Add this item to cart?')) {
+                        this.addToCart();
+                    }
+                }, 300);
+            }
+
+            showNotification(message, type = 'info') {
+                const notification = document.createElement('div');
+                const colors = {
+                    success: 'bg-green-500 text-white',
+                    error: 'bg-red-500 text-white',
+                    warning: 'bg-yellow-500 text-black',
+                    info: 'bg-blue-500 text-white'
+                };
+                
+                notification.className = `fixed top-4 right-4 p-3 rounded-md shadow-lg z-50 text-sm ${colors[type]}`;
+                notification.textContent = message;
+                
+                document.body.appendChild(notification);
+                
+                gsap.fromTo(notification,
+                    { x: 300, opacity: 0 },
+                    { x: 0, opacity: 1, duration: 0.3, ease: 'back.out(1.7)' }
+                );
+                
+                setTimeout(() => {
+                    gsap.to(notification, {
+                        x: 300,
+                        opacity: 0,
+                        duration: 0.3,
+                        onComplete: () => notification.remove()
+                    });
+                }, 3000);
+            }
+
+            loadUserData() {
+                const savedCartCount = localStorage.getItem('cartCount');
+                if (savedCartCount) {
+                    this.cartCount = parseInt(savedCartCount);
+                    this.updateCartDisplay();
+                }
+            }
+
+            saveCartData() {
+                localStorage.setItem('cartCount', this.cartCount);
+            }
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            window.amazonClone = new ResponsiveAmazonClone();
+            
+            // Add global functions
+            window.addToCart = () => amazonClone.addToCart();
+            
+            console.log('Responsive Amazon Clone initialized!');
         });
-
-        // Scroll animations
-        gsap.registerPlugin(ScrollTrigger);
-
-        gsap.utils.toArray('.full-section').forEach(section => {
-            gsap.from(section, {
-                scrollTrigger: {
-                    trigger: section,
-                    start: 'top 80%',
-                    toggleActions: 'play none none reverse'
-                },
-                duration: 1,
-                y: 50,
-                opacity: 0,
-                ease: 'power2.out'
-            });
-        });
-
-        // Add ScrollTrigger script
-        const script = document.createElement('script');
-        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js';
-        document.head.appendChild(script);
     </script>
 </body>
 </html>

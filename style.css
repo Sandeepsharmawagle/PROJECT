@@ -437,3 +437,168 @@ a:hover {
     display: block;
 }
 
+/* Mobile-specific enhancements */
+@media (max-width: 640px) {
+    .search-bar {
+        margin: 0 4px;
+    }
+    
+    .search-input::placeholder {
+        font-size: 14px;
+    }
+    
+    .hero-section {
+        height: 200px;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+    
+    .secondary-nav {
+        padding: 8px 16px;
+    }
+    
+    .secondary-nav .flex {
+        gap: 12px;
+    }
+    
+    .product-card {
+        min-height: 280px;
+    }
+    
+    .full-section {
+        padding: 16px;
+    }
+    
+    .full-section .flex {
+        gap: 12px;
+    }
+    
+    .full-section .grid {
+        gap: 12px;
+    }
+}
+
+/* Touch-friendly buttons */
+@media (max-width: 768px) {
+    button, .cursor-pointer {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .mobile-menu {
+        backdrop-filter: blur(10px);
+    }
+}
+
+/* Landscape phone optimization */
+@media (max-width: 896px) and (orientation: landscape) {
+    .hero-section {
+        height: 150px;
+    }
+    
+    .mobile-menu {
+        padding-top: 0;
+    }
+}
+
+/* Mobile-specific enhancements */
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.touch-manipulation {
+    touch-action: manipulation;
+}
+
+/* Smooth scrolling on mobile */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Prevent zoom on input focus */
+@media screen and (max-width: 768px) {
+    input[type="text"] {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    .product-card {
+        transform: translateZ(0); /* Hardware acceleration */
+        backface-visibility: hidden;
+    }
+}
+
+/* Improved touch targets */
+@media (max-width: 768px) {
+    button, 
+    .cursor-pointer,
+    a {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .nav-logo,
+    .cart-icon,
+    .mobile-menu-btn {
+        padding: 12px;
+    }
+}
+
+/* Loading states */
+.loading {
+    position: relative;
+    overflow: hidden;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .bg-white {
+        background-color: #1f2937;
+        color: #f9fafb;
+    }
+    
+    .bg-gray-200 {
+        background-color: #374151;
+    }
+    
+    .text-gray-900 {
+        color: #f9fafb;
+    }
+}
